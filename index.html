@@ -1,14 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='puppies'>
   <head>
     <meta charset="utf-8">
     <title>Angular Puppies</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
   </head>
 
-  <body>
-    <h1>Hello World</h1>
+  <body ng-controller='PuppyCtrl'>
+    <div id="flash"></div>
+    <div class="container">
 
+      <div class="row">
+
+        <div class="col-xs-8 col-xs-offset-2">
+          <h1>The AJAX Puppy Shelter</h1>
+          <h2>Register a new puppy</h2>
+
+          <form action="https://ajax-puppies.herokuapp.com/puppies.json" id="new-puppy">
+            <div class="form-group">
+              <label>Name
+                <input type="text" name="name" id="name">
+              </label>
+            </div>
+            <div class="form-group">
+              <label>Breed
+                <select type="select" ng-model='puppy.breed' ng-options='breed as breed.name for breed in breeds track by breed.id'>
+                </select>
+              </label>
+            </div>
+            <input type="submit" class="btn btn-info">
+          </form>
+
+          <h3>Our puppies:</h3>
+          <a ng-click='refreshList()'>Refresh puppy list</a>
+          {{ puppies }}
+
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- app -->
     <script src="app.js"></script>
+
+    <!-- services -->
+    <script src="/services/breedService.js"></script>
+    <script src="/services/puppyService.js"></script>
+
+    <!-- directives -->
+    <script src="/directives/puppyRow.js"></script>
+
+    <!-- controller -->
+    <script src="/puppyController.js"></script>
   </body>
 </html>
