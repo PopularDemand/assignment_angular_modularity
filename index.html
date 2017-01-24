@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Angular Puppies</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
   </head>
 
@@ -32,8 +33,21 @@
           </form>
 
           <h3>Our puppies:</h3>
-          <a ng-click='refreshList()'>Refresh puppy list</a>
-          {{ puppies }}
+          <span class="btn btn-default" ng-click='refreshList()'>Refresh puppy list</span>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Breed</th>
+                <th>Created At</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr puppy-row ng-repeat="puppy in puppies" puppy="puppy" delete-puppy="deletePuppy(id)">
+              </tr>
+            </tbody>
+          </table>
 
         </div>
       </div>

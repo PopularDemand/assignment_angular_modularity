@@ -1,9 +1,10 @@
 puppies.directive('puppyRow', function() {
   return {
-    templateUrl: '/puppyRow.html',
+    templateUrl: '/directives/puppyRow.html',
     restrict: 'A',
     scope: {
-      puppy: '='
+      puppy: '=',
+      deletePuppy: '&'
     }
-  }
-})
+  };
+});

@@ -1,15 +1,14 @@
 puppies.controller('PuppyCtrl', ['puppyService', 'breedService', '$scope', function(puppyService, breedService, $scope) {
-  
-  breedService.getAll().then(function(data) {
-    $scope.breeds = data.data;
-  });
 
   $scope.breeds = breedService.getAll();
+  $scope.puppies = puppyService.getAll();
 
-  var refreshList = function() {
-    puppyService.getAll().then(function(data) {
-      $scope.puppies = data.data;
-    })
-  }
+  $scope.refreshList = function() {
+    $scope.puppies = puppyService.getAll();
+  };
+
+  $scope.deletePuppy = function(id) {
+    puppyService.deletePuppy(id);
+  };
 
 }]);
