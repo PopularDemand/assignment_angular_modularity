@@ -1,6 +1,7 @@
 puppies.factory('puppyService', ['$http', function($http) {
 
   var _puppies = [];
+  var _id = [];
 
   var getAll = function() {
     $http.get('https://ajax-puppies.herokuapp.com/puppies.json')
@@ -10,7 +11,15 @@ puppies.factory('puppyService', ['$http', function($http) {
     return _puppies;
   };
 
-  var addPuppy = function() {
+  var addPuppy = function(puppy) {
+    console.log(puppy);
+    puppy.id = _id;
+    _id++;
+    $http.post('https://ajax-puppies.herokuapp.com/puppies.json',
+      JSON.stringify(puppy)
+    ).success(function(data) {
+      _puppies.push(data);
+    })
 
   };
 

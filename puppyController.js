@@ -11,4 +11,10 @@ puppies.controller('PuppyCtrl', ['puppyService', 'breedService', '$scope', funct
     puppyService.deletePuppy(id);
   };
 
+  $scope.addPuppy = function(puppy) {
+    puppyService.addPuppy(puppy);
+    puppy.name = null;
+    puppy.breed = null;
+  }
+
 }]);
